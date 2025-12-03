@@ -208,14 +208,21 @@ if (questionedDropzone && questionedInput) {
     });
 }
 
-// Reference input change
+const MAX_FILES = 6;
+
 if (referenceInput) {
     referenceInput.addEventListener('change', (e) => {
         const files = Array.from(e.target.files).filter(isValidFile);
-        const remainingSlots = 6 - referenceFiles.length;
+        const remainingSlots = MAX_FILES - referenceFiles.length;
 
         if (files.length > remainingSlots) {
-            showModal(`Please upload only ${remainingSlots} more file(s). Maximum is 6 files.`);
+            // If no slots left, show only the max message
+            if (remainingSlots <= 0) {
+                showModal(`Please upload only ${remainingSlots} more file(s).`);
+            } else {
+                showModal(` Maximum is ${MAX_FILES} files.`);
+            }
+
             const filesToAdd = files.slice(0, remainingSlots);
             referenceFiles = [...referenceFiles, ...filesToAdd];
         } else {
