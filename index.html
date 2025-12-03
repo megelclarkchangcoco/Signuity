@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Signature Detection Tool</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="images/logo black.png">
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/Logo.png" alt="Signuity Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#"></a>
+            <a href="#" class="active">Scan</a>
+            <a href="#"></a>
+        </div>
+        <div class="user-icon"></div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>The AI Signature Detection Tool</h1>
+            <p>Easily check if two signatures match or detect possible forgery.</p>
+        </div>
+
+        <div class="upload-section">
+            <!-- REFERENCE -->
+            <div class="upload-box">
+                <h3>REFERENCE IMAGE/SIGNATURE</h3>
+                <div class="dropzone" id="referenceDropzone">
+                    <div class="dropzone-icon">
+                        <img src="images/image_add.png" alt="Add">
+                    </div>
+                    <p>Upload a reference signature – <strong>authentic sample</strong></p>
+                    <p class="dropzone-info">Supported formats: JPG, PNG, PDF (max 10MB)</p>
+                    <p class="dropzone-or">Drag & drop files here or</p>
+                    <button class="browse-btn" type="button" id="referenceBrowseBtn">
+                        <img src="images/image_folder.png" alt="Browse">
+                        Browse
+                    </button>
+                </div>
+                <input type="file" id="referenceInput" multiple accept=".jpg,.jpeg,.png,.pdf">
+                <div class="upload-count" id="referenceCount">Uploaded: 0/6</div>
+                <div class="file-list" id="referenceFileList"></div>
+            </div>
+
+            <!-- QUESTIONED -->
+            <div class="upload-box">
+                <h3>QUESTIONED SIGNATURE</h3>
+                <div class="dropzone" id="questionedDropzone">
+                    <div class="dropzone-icon">
+                        <img src="images/image_add.png" alt="Add">
+                    </div>
+                    <p>Upload a signature image to verify authenticity.</p>
+                    <p class="dropzone-info">Supported formats: JPG, PNG, PDF (max 10MB)</p>
+                    <p class="dropzone-or">Drag & drop files here or</p>
+                    <button class="browse-btn" type="button" id="questionedBrowseBtn">
+                        <img src="images/image_folder.png" alt="Browse">
+                        Browse
+                    </button>
+                </div>
+                <input type="file" id="questionedInput" accept=".jpg,.jpeg,.png,.pdf">
+                <div class="upload-count" id="questionedCount">Uploaded: 0/1</div>
+                <div class="file-list" id="questionedFileList"></div>
+            </div>
+        </div>
+
+        <button class="verify-btn" type="button">VERIFY</button>
+    </div>
+
+    <!-- Warning Modal -->
+    <div id="warningModal" class="modal">
+        <div class="modal-content">
+            <img src="images/warning.png" alt="Warning" class="modal-icon">
+            <h2 id="modalTitle">Warning</h2>
+            <p id="modalMessage">Please upload the required files.</p>
+            <button class="modal-close-btn" id="modalCloseBtn" type="button">OK</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Verifying signatures... This may take a moment.</p>
+    </div>
+</body>
+</html>
